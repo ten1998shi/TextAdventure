@@ -169,12 +169,119 @@ blightrootTreant = {
     "luck": "10"
 }
 
-
-
-
 #Tier 4 Mobs
 
+stormBasilisk = {
+    "str": "40",
+    "int": "25",
+    "vit": "40",
+    "dex": "20",
+    "spd": "20",
+    "ins": "20",
+    "def": "45",
+    "luck": "20"
+}
+
+shadowStalker = {
+    "str": "20",
+    "int": "25",
+    "vit": "20",
+    "dex": "20",
+    "spd": "60",
+    "ins": "20",
+    "def": "20",
+    "luck": "15"
+}
+
+ironskinMinotaur = {
+    "str": "40",
+    "int": "5",
+    "vit": "60",
+    "dex": "5",
+    "spd": "10",
+    "ins": "5",
+    "def": "60",
+    "luck": "5"
+}
+
+firefangHydra = {
+    "str": "60",
+    "int": "10",
+    "vit": "40",
+    "dex": "5",
+    "spd": "20",
+    "ins": "1",
+    "def": "45",
+    "luck": "20"
+}
+
+legendaryManticore = {
+    "str": "45",
+    "int": "45",
+    "vit": "45",
+    "dex": "45",
+    "spd": "45",
+    "ins": "45",
+    "def": "45",
+    "luck": "45"
+}
+
 #Boss Monster
+
+infernoDragonSovereign = {
+    "str": "65",
+    "int": "50",
+    "vit": "55",
+    "dex": "20",
+    "spd": "40",
+    "ins": "55",
+    "def": "60",
+    "luck": "30"
+}
+
+titanKing = {
+    "str": "25",
+    "int": "25",
+    "vit": "80",
+    "dex": "10",
+    "spd": "25",
+    "ins": "25",
+    "def": "80",
+    "luck": "20"
+}
+
+plaguebringerBehemoth = {
+    "str": "20",
+    "int": "70",
+    "vit": "40",
+    "dex": "20",
+    "spd": "40",
+    "ins": "40",
+    "def": "45",
+    "luck": "40"
+}
+
+terrorfangChimera = {
+    "str": "70",
+    "int": "15",
+    "vit": "60",
+    "dex": "30",
+    "spd": "60",
+    "ins": "15",
+    "def": "45",
+    "luck": "30"
+}
+
+voidrendLichKing = {
+    "str": "30",
+    "int": "95",
+    "vit": "30",
+    "dex": "15",
+    "spd": "50",
+    "ins": "70",
+    "def": "25",
+    "luck": "45"
+}
 
 
 
