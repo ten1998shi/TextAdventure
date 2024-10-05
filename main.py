@@ -1,4 +1,7 @@
+import random
+
 #Character Dictionaries
+
 #Tier 1 Mobs
 tinyRaptor = {
     "str": "5",
@@ -287,8 +290,6 @@ voidrendLichKing = {
 
 
 #Roll Dice Function
-def rollDice():
-    print()
 
 #Combat Function
 def startCombat():
@@ -298,10 +299,3 @@ def startCombat():
 def startChapter1():
     print()
 
-#
-
-#
-
-#
-
-#
