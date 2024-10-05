@@ -334,41 +334,48 @@ def rollTheDice ():
 
 
 def chooseClass():
+    global playerStr
+    global playerInt
+    global playerVit
+    global playerDex
+    global playerSpd
+    global playerLuck
+    global playerIns
+    global playerDef
     chooseClass = 0
-    while chooseClass not in range[1, 2, 3]:
-        chooseClass = int(input("There are 3 classes. Archer, Warrior and Mage. Which one would you like to start your journey with? Type 1 for Archer, 2 for Warrior or 3 for Mage"))
+    while chooseClass not in [1, 2, 3]:
+        chooseClass = int(input("There are 3 classes. Archer, Warrior and Mage. Which one would you like to start your journey with? Type 1 for Archer, 2 for Warrior or 3 for Mage: "))
         if chooseClass == 1:
-            playerStr == 5
-            playerInt == 5
-            playerVit == 10
-            playerDex == 15
-            playerSpd == 15
-            playerLuck == 15
-            playerIns == 5
-            playerDef == 10
+            playerStr = 5
+            playerInt = 5
+            playerVit = 10
+            playerDex = 15
+            playerSpd = 15
+            playerLuck = 15
+            playerIns = 5
+            playerDef = 10
             break
         elif chooseClass == 2:
-            playerStr == 15
-            playerInt == 5
-            playerVit == 15
-            playerDex == 10
-            playerSpd == 10
-            playerLuck == 5
-            playerIns == 5
-            playerDef == 15
+            playerStr = 15
+            playerInt = 5
+            playerVit = 15
+            playerDex = 10
+            playerSpd = 10
+            playerLuck = 5
+            playerIns = 5
+            playerDef = 15
             break
         else:
-            playerStr == 5
-            playerInt == 15
-            playerVit == 10
-            playerDex == 10
-            playerSpd == 5
-            playerLuck == 15
-            playerIns == 15
-            playerDef == 5
+            playerStr = 5
+            playerInt = 15
+            playerVit = 10
+            playerDex = 10
+            playerSpd = 5
+            playerLuck = 15
+            playerIns = 15
+            playerDef = 5
             break
             
     return playerStr, playerInt, playerVit, playerDex, playerSpd, playerLuck, playerIns, playerDef
-
 
 
