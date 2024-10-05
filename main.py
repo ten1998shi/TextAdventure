@@ -290,8 +290,7 @@ voidrendLichKing = {
 
 
 #Roll Dice Function
-def rollDice():
-    print()
+
 
 #Combat Function
 def startCombat():
