@@ -287,8 +287,37 @@ voidrendLichKing = {
 
 
 #Roll Dice Function
-def rollDice():
-    print()
+def diceMechanic ():
+
+    diceRollResult = 0
+
+    diceRoll = random.randint (2, 12)
+
+    lckRoll = random.randint (1, 100)
+
+    if lckRoll <= playerLck:    
+        
+        diceRoll = diceRoll + 2
+
+    print (f'Your roll: {diceRoll}')
+
+    diceRollResult += diceRoll
+
+    while diceRoll > 12:
+        
+        diceRoll = random.randint (2, 12)
+        
+        lckRoll = random.randint (1, 100)
+        
+        if lckRoll <= playerLck:
+            
+            diceRoll = diceRoll + 2
+        
+        diceRollResult += diceRoll
+        
+        print (f'Your roll: {diceRoll}')
+        
+    print (f'Your result: {diceRollResult}')
 
 #Combat Function
 def startCombat():
