@@ -336,8 +336,7 @@ def rollTheDice (tempPlayerLck):
     
 
 #Combat Function
-def startCombat():
-   
+  
 def startCombat (playerStrTemp, playerSpdTemp, playerVitTemp, enemyDefTemp, enemyVitTemp, enemySpdTemp):
     
     
