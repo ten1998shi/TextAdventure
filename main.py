@@ -324,7 +324,66 @@ def rollTheDice (tempPlayerLck):
 
 #Combat Function
 def startCombat():
-    print()
+   
+def startCombat (playerStrTemp, playerSpdTemp, playerVitTemp, enemyDefTemp, enemyVitTemp, enemySpdTemp):
+    
+    
+    if enemySpdTemp > playerSpdTemp:
+        
+        rollTheDice ()
+    
+        enemyAtk = enemyStrTemp + diceRollResult
+    
+        playerDmgProt = playerDefTemp / 100
+    
+        dmgOnPlayer = playerDmgProt * enemyAtk
+    
+        playerVitTemp -= dmgOnPlayer
+        
+    elif enemySpdTemp == playerSpdTemp:
+        
+        playerTieBreaker = random.random ()
+        enemyTieBreaker = random.random ()
+       
+        while enemyTieBreaker == playerTieBreaker:
+            playerTieBreaker = random.random ()
+            enemyTieBreaker = random.random ()
+        
+        if enemyTieBreaker > playerTieBreaker:
+            
+            rollTheDice ()
+                   
+            enemyAtk = enemyStrTemp + diceRollResult
+    
+            playerDmgProt = playerDefTemp / 100
+    
+            dmgOnPlayer = playerDmgProt * enemyAtk
+    
+            playerVitTemp -= dmgOnPlayer
+            
+            
+        
+        while  playerVitTemp or enemyVitTemp > 0:
+    
+            rollTheDice ()
+        
+            playerAtk = playerStrTemp + diceRollResult
+        
+            enemyDmgProt = enemyDefTemp / 100
+        
+            dmgOnEnemy = enemyDmgProt * playerAtk
+        
+            enemyVitTemp - dmgOnEnemy
+            
+            rollTheDice ()
+                   
+            enemyAtk = enemyStrTemp + diceRollResult
+    
+            playerDmgProt = playerDefTemp / 100
+    
+            dmgOnPlayer = playerDmgProt * enemyAtk
+    
+            playerVitTemp -= dmgOnPlayer
 
 #Chapter 1 Function
 def startChapter1():
