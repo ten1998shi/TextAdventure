@@ -1,7 +1,6 @@
 import random
 #Character Dictionaries
 
-<<<<<<< HEAD
 
 #Class Stats
 playerStr = 0
@@ -13,8 +12,6 @@ playerIns = 0
 playerDef = 0
 playerLuck = 0
 
-=======
->>>>>>> c5a57d4ac4ee89aebf92b883aef2ec2c26c3a1f9
 #Tier 1 Mobs
 tinyRaptor = {
     "str": "5",
@@ -334,8 +331,6 @@ def rollTheDice (tempPlayerLck):
         print (f'Your roll: {diceRoll}')
         
     print (f'Your result: {diceRollResult}')
-<<<<<<< HEAD
-=======
     
     return diceRollResult
     
@@ -343,7 +338,6 @@ def rollTheDice (tempPlayerLck):
 #Combat Function
 def startCombat():
     print()
->>>>>>> c5a57d4ac4ee89aebf92b883aef2ec2c26c3a1f9
 
 
 def chooseClass():
