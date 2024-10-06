@@ -474,7 +474,7 @@ def chooseClass():
 
 
 # Random mob encounter
-def mobEncounter(tierChoice):
+def mobEncounter(tierChoice): # Insert a tier in the range of 1-4 as an argument
     mobID = 0
     mobID = random.randint(1, 5)
     if tierChoice == 1:
@@ -536,4 +536,11 @@ def startChapter1():
     print("Dialog option 2") # <-- on click
     print("Dialog option 3") # <-- on click
 
+
+
+
+
+
+
+#Test Area
 print(mobEncounter(1))
