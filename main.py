@@ -14,6 +14,7 @@ playerLuck = 0
 
 #Tier 1 Mobs
 tinyRaptor = {
+    "name": "Tiny Raptor",
     "str": "5",
     "int": "1",
     "vit": "3",
@@ -25,6 +26,7 @@ tinyRaptor = {
 }
 
 caveSpider = {
+    "name": "Cave Spider",
     "str": "3",
     "int": "1",
     "vit": "2",
@@ -36,6 +38,7 @@ caveSpider = {
 }
 
 grublingWorm = {
+    "name":"Grubling Worm",
     "str": "1",
     "int": "1",
     "vit": "10",
@@ -47,6 +50,7 @@ grublingWorm = {
 }
 
 whiskerRat = {
+    "name": "Whisker Rat",
     "str": "3",
     "int": "1",
     "vit": "2",
@@ -58,6 +62,7 @@ whiskerRat = {
 }
 
 duskbatHatchling = {
+    "name": "Duskbat Hatchling",
     "str": "1",
     "int": "1",
     "vit": "10",
@@ -71,6 +76,7 @@ duskbatHatchling = {
 #Tier 2 Mobs
 
 squeakclawDrake = {
+    "name": "Squeak Claw Drake",
     "str": "15",
     "int": "5",
     "vit": "10",
@@ -82,6 +88,7 @@ squeakclawDrake = {
 }
 
 frostlingSprite = {
+    "name": "Frostling Sprite",
     "str": "5",
     "int": "25",
     "vit": "5",
@@ -93,6 +100,7 @@ frostlingSprite = {
 }
 
 twitchfangBat = {
+    "name": "Twitch Fang Bat",
     "str": "5",
     "int": "5",
     "vit": "5",
@@ -104,6 +112,7 @@ twitchfangBat = {
 }
 
 feralGnat = {
+    "name": "Feral Gnat",
     "str": "20",
     "int": "2",
     "vit": "10",
@@ -115,6 +124,7 @@ feralGnat = {
 }
 
 pufftailRabbit = {
+    "name": "Puff Tail Rabbit",
     "str": "10",
     "int": "3",
     "vit": "10",
@@ -128,6 +138,7 @@ pufftailRabbit = {
 #Tier 3 Mobs
 
 emberjawDrake = {
+    "name": "Emberjaw Drake",
     "str": "35",
     "int": "20",
     "vit": "20",
@@ -139,6 +150,7 @@ emberjawDrake = {
 }
 
 vilewingHarpy = {
+    "name": "Vile Wing Harpy",
     "str": "15",
     "int": "20",
     "vit": "10",
@@ -150,6 +162,7 @@ vilewingHarpy = {
 }
 
 frostclawLynx = {
+    "name": "Frostclaw Lynx",
     "str": "20",
     "int": "10",
     "vit": "20",
@@ -161,6 +174,7 @@ frostclawLynx = {
 }
 
 fierceRavanger = {
+    "name": "Fierce Ravanger",
     "str": "40",
     "int": "5",
     "vit": "20",
@@ -172,6 +186,7 @@ fierceRavanger = {
 }
 
 blightrootTreant = {
+    "name": "Blightroot Treant",
     "str": "15",
     "int": "10",
     "vit": "40",
@@ -185,6 +200,7 @@ blightrootTreant = {
 #Tier 4 Mobs
 
 stormBasilisk = {
+    "name": "Storm Basilisk",
     "str": "40",
     "int": "25",
     "vit": "40",
@@ -196,6 +212,7 @@ stormBasilisk = {
 }
 
 shadowStalker = {
+    "name": "Shadow Stalker",
     "str": "20",
     "int": "25",
     "vit": "20",
@@ -207,6 +224,7 @@ shadowStalker = {
 }
 
 ironskinMinotaur = {
+    "name": "ironskin Minotaur",
     "str": "40",
     "int": "5",
     "vit": "60",
@@ -218,6 +236,7 @@ ironskinMinotaur = {
 }
 
 firefangHydra = {
+    "name": "Firefang Hydra",
     "str": "60",
     "int": "10",
     "vit": "40",
@@ -229,6 +248,7 @@ firefangHydra = {
 }
 
 legendaryManticore = {
+    "name": "Legendary Manticore",
     "str": "45",
     "int": "45",
     "vit": "45",
@@ -242,6 +262,7 @@ legendaryManticore = {
 #Boss Monster
 
 infernoDragonSovereign = {
+    "name": "Inferno Dragon Sovereign",
     "str": "65",
     "int": "50",
     "vit": "55",
@@ -253,6 +274,7 @@ infernoDragonSovereign = {
 }
 
 titanKing = {
+    "name": "Titan King",
     "str": "25",
     "int": "25",
     "vit": "80",
@@ -264,6 +286,7 @@ titanKing = {
 }
 
 plaguebringerBehemoth = {
+    "name": "Plaguebringer Behemoth",
     "str": "20",
     "int": "70",
     "vit": "40",
@@ -275,6 +298,7 @@ plaguebringerBehemoth = {
 }
 
 terrorfangChimera = {
+    "name": "Terrorfang Chimera",
     "str": "70",
     "int": "15",
     "vit": "60",
@@ -286,6 +310,7 @@ terrorfangChimera = {
 }
 
 voidrendLichKing = {
+    "name": "Voidrend Lich King",
     "str": "30",
     "int": "95",
     "vit": "30",
@@ -398,6 +423,7 @@ def startCombat (playerStrTemp, playerSpdTemp, playerVitTemp, enemyDefTemp, enem
             playerVitTemp -= dmgOnPlayer
 
 
+# Class choice function
 def chooseClass():
     global playerStr
     global playerInt
@@ -419,6 +445,7 @@ def chooseClass():
             playerLuck = 15
             playerIns = 5
             playerDef = 10
+            print("You are an Archer!")
             break
         elif chooseClass == 2:
             playerStr = 15
@@ -429,6 +456,7 @@ def chooseClass():
             playerLuck = 5
             playerIns = 5
             playerDef = 15
+            print("Your are a Warrior!")
             break
         else:
             playerStr = 5
@@ -439,8 +467,73 @@ def chooseClass():
             playerLuck = 15
             playerIns = 15
             playerDef = 5
+            print("You are a Mage!")
             break
             
     return playerStr, playerInt, playerVit, playerDex, playerSpd, playerLuck, playerIns, playerDef
 
 
+# Random mob encounter
+def mobEncounter(tierChoice):
+    mobID = 0
+    mobID = random.randint(1, 5)
+    if tierChoice == 1:
+        if mobID == 1:
+            mobID = tinyRaptor
+        elif mobID == 2:
+            mobID = caveSpider
+        elif mobID == 3:
+            mobID = grublingWorm
+        elif mobID == 4:
+            mobID = whiskerRat
+        else:
+            mobID = duskbatHatchling
+    elif tierChoice == 2:
+        if mobID == 1:
+            mobID = squeakclawDrake
+        elif mobID == 2:
+            mobID = frostlingSprite 
+        elif mobID == 3:
+            mobID = twitchfangBat
+        elif mobID == 4:
+            mobID = feralGnat
+        else:
+            mobID = pufftailRabbit
+    elif tierChoice == 3:
+        if mobID == 1:
+            mobID = emberjawDrake
+        elif mobID == 2:
+            mobID = vilewingHarpy
+        elif mobID == 3:
+            mobID = frostclawLynx
+        elif mobID == 4:
+            mobID = fierceRavanger
+        else:
+            mobID = blightrootTreant
+    elif tierChoice == 4:
+        if mobID == 1:
+            mobID = stormBasilisk
+        elif mobID == 2:
+            mobID = shadowStalker
+        elif mobID == 3:
+            mobID== ironskinMinotaur
+        elif mobID == 4:
+            mobID = firefangHydra
+        else:
+            mobID = legendaryManticore
+
+    return mobID
+        
+        
+
+# Chapter 1 function
+def startChapter1():
+    print("Welcome to insertGameName")
+    chooseClass()
+    print("Insert Text")
+    #Dialog options
+    print("Dialog option 1") # <-- on click
+    print("Dialog option 2") # <-- on click
+    print("Dialog option 3") # <-- on click
+
+print(mobEncounter(1))
