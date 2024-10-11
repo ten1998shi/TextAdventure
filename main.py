@@ -1,16 +1,18 @@
 import random
 #Character Dictionaries
 
+#Player Level
+playerLevel = 1
 
 #Class Stats
-playerStr = 0
-playerInt = 0
-playerVit = 0
-playerDex = 0
-playerSpd = 0
-playerIns = 0
-playerDef = 0
-playerLuck = 0
+playerStr = 5
+playerInt = 5
+playerVit = 5
+playerDex = 5
+playerSpd = 5
+playerIns = 5
+playerDef = 5
+playerLuck = 5
 
 #Tier 1 Mobs
 tinyRaptor = {
@@ -523,24 +525,52 @@ def mobEncounter(tierChoice): # Insert a tier in the range of 1-4 as an argument
             mobID = legendaryManticore
 
     return mobID
-        
+
+
+# Level up function
+def levelUp():
+    global playerLevel
+    playerLevel += 1
+    print(f"You leveled up! You are now level {playerLevel}")
+    return playerLevel
+
         
 
 # Chapter 1 function
 def startChapter1():
+    print("To choose dialog options type 1, 2, 3")
+    
     print("Welcome to insertGameName")
+    
     chooseClass()
+
     print("Insert Text")
     #Dialog options
-    print("Dialog option 1") # <-- on click
-    print("Dialog option 2") # <-- on click
-    print("Dialog option 3") # <-- on click
-
-
+    print("Dialog option 1")
+    print("Dialog option 2") 
+    print("Dialog option 3") 
+    Ch1Dialog1Choice = 0
+    Ch1Dialog1Choice = int(input("Filler Text")) # Player selects dialog option via numbers (1, 2 , 3)
+    while Ch1Dialog1Choice not in [1, 2 , 3]:
+         Ch1Dialog1Choice = int(input("Filler Text")) # Player selects dialog option via numbers (1, 2 , 3)
+         if Ch1Dialog1Choice == 1 or Ch1Dialog1Choice == 2 or  Ch1Dialog1Choice == 3:
+            break
+        
+    if Ch1Dialog1Choice == 1:
+        print(mobEncounter(1))                      # to be changed
+        #startCombat()                              # to be changed
+        
+    elif Ch1Dialog1Choice == 2:
+        print("Filler")                     # to be changed
+        
+    elif Ch1Dialog1Choice == 3:
+        print("Filler")                     # to be changed
+        
 
 
 
 
 
 #Test Area
-print(mobEncounter(1))
+levelUp()
+print(playerLevel)
