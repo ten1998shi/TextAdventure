@@ -355,7 +355,7 @@ def rollTheDice (tempPlayerLck):
         
         diceRoll = diceRoll + 2
 
-    print (f'Your roll: {diceRoll}')
+    print (f'Dice roll: {diceRoll}')
 
     diceRollResult += diceRoll
 
@@ -371,74 +371,277 @@ def rollTheDice (tempPlayerLck):
         
         diceRollResult += diceRoll
         
-        print (f'Your roll: {diceRoll}')
+        print (f'Dice roll: {diceRoll}')
         
-    print (f'Your result: {diceRollResult}')
+    print (f'End result: {diceRollResult}')
     
     return diceRollResult
     
 
 #Combat Function
   
-def startCombat (playerStrTemp, playerSpdTemp, playerVitTemp, enemyDefTemp, enemyVitTemp, enemySpdTemp):
+def startCombat (playerStrTemp, playerSpdTemp, playerDefTemp, playerVitTemp, enemyDefTemp, enemyVitTemp, enemyStrTemp, enemySpdTemp):
     
+    print ('Combat starts!')
     
-    if enemySpdTemp > playerSpdTemp:
+    # check if enemy is actually faster and thus goes first
+    if enemySpdTemp > playerSpdTemp:            
         
-        rollTheDice ()
-    
-        enemyAtk = enemyStrTemp + diceRollResult
-    
-        playerDmgProt = playerDefTemp / 100
-    
-        dmgOnPlayer = playerDmgProt * enemyAtk
-    
-        playerVitTemp -= dmgOnPlayer
+        print ('The enemy starts the round!')
         
+        playerDodgeChance = playerSpdTemp / 200
+        enemyHitChance = random.random ()
+
+        if playerDodgeChance > enemyHitChance:
+            print ('You dodged the attack!')
+                    
+        elif playerDodgeChance < enemyHitChance:        
+            enemyAtk = enemyStrTemp + rollTheDice (50)        
+            print (f'The enemy attacks with {enemyAtk} damage!')
+            playerDmgProt = playerDefTemp / 100    
+            dmgOnPlayer = playerDmgProt * enemyAtk    
+            playerVitTemp -= dmgOnPlayer
+            print (f'The enemy deals {dmgOnPlayer} damage.')
+            print (f'You have {playerVitTemp}Hp remaining.')
+                    
+                        
+        elif playerDodgeChance == enemyHitChance:
+                    
+                playerTieBreaker = random.random ()
+                enemyTieBreaker = random.random ()
+                    
+                # just in case they actually roll the same number again >.>        
+                while enemyTieBreaker == playerTieBreaker:
+                            
+                    playerTieBreaker = random.random ()
+                    enemyTieBreaker = random.random ()
+                        
+                    # if the enemy wins the tie breaker, they start. otherwise nothing happens and player starts by default
+                if enemyTieBreaker > playerTieBreaker:
+                        
+                    enemyAtk = enemyStrTemp + rollTheDice (50)    
+                    print (f'The enemy attacks with {enemyAtk} damage!')
+                    playerDmgProt = playerDefTemp / 100    
+                    dmgOnPlayer = playerDmgProt * enemyAtk    
+                    playerVitTemp -= dmgOnPlayer
+                    print (f'The enemy deals {dmgOnPlayer} damage.')
+                    print (f'You have {playerVitTemp}Hp remaining.')
+        
+    # if both are the same speed, they roll a number between 0-1 and the larger number wins    
     elif enemySpdTemp == playerSpdTemp:
         
         playerTieBreaker = random.random ()
         enemyTieBreaker = random.random ()
        
+       # just in case they actually roll the same number again >.>
         while enemyTieBreaker == playerTieBreaker:
+            
             playerTieBreaker = random.random ()
             enemyTieBreaker = random.random ()
         
+        # if the enemy wins the tie breaker, they start. otherwise nothing happens and player starts by default
         if enemyTieBreaker > playerTieBreaker:
             
-            rollTheDice ()
-                   
-            enemyAtk = enemyStrTemp + diceRollResult
-    
-            playerDmgProt = playerDefTemp / 100
-    
-            dmgOnPlayer = playerDmgProt * enemyAtk
-    
+            enemyAtk = enemyStrTemp + rollTheDice ()    
+            print (f'The enemy attacks with {enemyAtk} damage!')
+            playerDmgProt = playerDefTemp / 100    
+            dmgOnPlayer = playerDmgProt * enemyAtk    
             playerVitTemp -= dmgOnPlayer
+            print (f'The enemy deals {dmgOnPlayer} damage.')
+            print (f'You have {playerVitTemp}Hp remaining.')
             
             
-        
-        while  playerVitTemp or enemyVitTemp > 0:
-    
-            rollTheDice ()
-        
-            playerAtk = playerStrTemp + diceRollResult
-        
-            enemyDmgProt = enemyDefTemp / 100
-        
-            dmgOnEnemy = enemyDmgProt * playerAtk
-        
-            enemyVitTemp - dmgOnEnemy
             
-            rollTheDice ()
-                   
-            enemyAtk = enemyStrTemp + diceRollResult
-    
-            playerDmgProt = playerDefTemp / 100
-    
-            dmgOnPlayer = playerDmgProt * enemyAtk
-    
-            playerVitTemp -= dmgOnPlayer
+        # fighting is a loop that continues on until someone loses all their hp
+        while  playerVitTemp or enemyVitTemp > 0:    
+            
+            playerChoice = input ('Choose your action (attack, defend, item, talk): ')
+            
+            if playerChoice == 'attack': 
+        
+                playerAtk = playerStrTemp + rollTheDice (50)   
+                print (f'You attack with {playerAtk} damage!')     
+                enemyDmgProt = enemyDefTemp / 100        
+                dmgOnEnemy = enemyDmgProt * playerAtk        
+                enemyVitTemp - dmgOnEnemy
+                print (f'You deal {dmgOnEnemy} damage.')
+                print (f'Enemy has {enemyVitTemp}Hp remaining.')
+                                
+                playerDodgeChance = playerSpdTemp / 200
+                enemyHitChance = random.random ()
+
+                if playerDodgeChance > enemyHitChance:
+                    print ('You dodged the attack!')
+                    
+                elif playerDodgeChance < enemyHitChance:
+                    
+                    enemyAtk = enemyStrTemp + rollTheDice (50)        
+                    print (f'The enemy attacks with {enemyAtk} damage!')
+                    playerDmgProt = playerDefTemp / 100    
+                    dmgOnPlayer = playerDmgProt * enemyAtk    
+                    playerVitTemp -= dmgOnPlayer
+                    print (f'The enemy deals {dmgOnPlayer} damage.')
+                    print (f'You have {playerVitTemp}Hp remaining.')
+                    
+                        
+                elif playerDodgeChance == enemyHitChance:
+                    
+                    playerTieBreaker = random.random ()
+                    enemyTieBreaker = random.random ()
+                    
+                    # just in case they actually roll the same number again >.>        
+                    while enemyTieBreaker == playerTieBreaker:
+                            
+                            playerTieBreaker = random.random ()
+                            enemyTieBreaker = random.random ()
+                        
+                        # if the enemy wins the tie breaker, they start. otherwise nothing happens and player starts by default
+                    if enemyTieBreaker > playerTieBreaker:
+                        
+                        enemyAtk = enemyStrTemp + rollTheDice (50)    
+                        print (f'The enemy attacks with {enemyAtk} damage!')
+                        playerDmgProt = playerDefTemp / 100    
+                        dmgOnPlayer = playerDmgProt * enemyAtk    
+                        playerVitTemp -= dmgOnPlayer
+                        print (f'The enemy deals {dmgOnPlayer} damage.')
+                        print (f'You have {playerVitTemp}Hp remaining.')
+
+            elif playerChoice == 'defend':
+                                
+                playerDodgeChance = playerSpdTemp / 200
+                enemyHitChance = random.random ()
+
+                if playerDodgeChance > enemyHitChance:
+                    print ('You dodged the attack!')
+                    
+                elif playerDodgeChance < enemyHitChance:
+                    
+                    enemyAtk = enemyStrTemp + rollTheDice (50)
+                    print (f'The enemy attacks with {enemyAtk} damage!')
+                    playerDmgProt = playerDefTemp / 100 
+                    playerDmgProt = playerDmgProt * 2   
+                    dmgOnPlayer = playerDmgProt * enemyAtk    
+                    playerVitTemp -= dmgOnPlayer
+                    print (f'The enemy deals {dmgOnPlayer} damage.')
+                    print (f'You have {playerVitTemp}Hp remaining.')
+                    
+                        
+                elif playerDodgeChance == enemyHitChance:
+                    
+                    playerTieBreaker = random.random ()
+                    enemyTieBreaker = random.random ()
+                    
+                    # just in case they actually roll the same number again >.>        
+                    while enemyTieBreaker == playerTieBreaker:
+                            
+                            playerTieBreaker = random.random ()
+                            enemyTieBreaker = random.random ()
+                        
+                        # if the enemy wins the tie breaker, they start. otherwise nothing happens and player starts by default
+                    if enemyTieBreaker > playerTieBreaker:
+                        
+                        enemyAtk = enemyStrTemp + rollTheDice (50)
+                        print (f'The enemy attacks with {enemyAtk} damage!')
+                        playerDmgProt = playerDefTemp / 100 
+                        playerDmgProt = playerDmgProt * 2   
+                        dmgOnPlayer = playerDmgProt * enemyAtk    
+                        playerVitTemp -= dmgOnPlayer
+                        print (f'The enemy deals {dmgOnPlayer} damage.')
+                        print (f'You have {playerVitTemp}Hp remaining.')
+            
+            elif playerChoice == 'item':
+                
+                ###########
+                ###########
+                ###########
+                ###########
+                ###########
+                
+                playerDodgeChance = playerSpdTemp / 200
+                enemyHitChance = random.random ()
+
+                if playerDodgeChance > enemyHitChance:
+                    print ('You dodged the attack!')
+                    
+                elif playerDodgeChance < enemyHitChance:
+                    
+                    enemyAtk = enemyStrTemp + rollTheDice (50)        
+                    print (f'The enemy attacks with {enemyAtk} damage!')
+                    playerDmgProt = playerDefTemp / 100    
+                    dmgOnPlayer = playerDmgProt * enemyAtk    
+                    playerVitTemp -= dmgOnPlayer
+                    print (f'The enemy deals {dmgOnPlayer} damage.')
+                    print (f'You have {playerVitTemp}Hp remaining.')
+                    
+                        
+                elif playerDodgeChance == enemyHitChance:
+                    
+                    playerTieBreaker = random.random ()
+                    enemyTieBreaker = random.random ()
+                    
+                    # just in case they actually roll the same number again >.>        
+                    while enemyTieBreaker == playerTieBreaker:
+                            
+                            playerTieBreaker = random.random ()
+                            enemyTieBreaker = random.random ()
+                        
+                        # if the enemy wins the tie breaker, they start. otherwise nothing happens and player starts by default
+                    if enemyTieBreaker > playerTieBreaker:
+                        
+                        enemyAtk = enemyStrTemp + rollTheDice (50)    
+                        print (f'The enemy attacks with {enemyAtk} damage!')
+                        playerDmgProt = playerDefTemp / 100    
+                        dmgOnPlayer = playerDmgProt * enemyAtk    
+                        playerVitTemp -= dmgOnPlayer                          
+                        print (f'The enemy deals {dmgOnPlayer} damage.')
+                        print (f'You have {playerVitTemp}Hp remaining.')    
+                
+            elif playerChoice == 'talk':
+                
+                ##########
+                ##########
+                ##########
+                ##########
+                ##########    
+                playerDodgeChance = playerSpdTemp / 200
+                enemyHitChance = random.random ()
+
+                if playerDodgeChance > enemyHitChance:
+                    print ('You dodged the attack!')
+                    
+                elif playerDodgeChance < enemyHitChance:
+                    
+                    enemyAtk = enemyStrTemp + rollTheDice (50)        
+                    print (f'The enemy attacks with {enemyAtk} damage!')
+                    playerDmgProt = playerDefTemp / 100    
+                    dmgOnPlayer = playerDmgProt * enemyAtk    
+                    playerVitTemp -= dmgOnPlayer
+                    print (f'The enemy deals {dmgOnPlayer} damage.')
+                    print (f'You have {playerVitTemp}Hp remaining.')
+                    
+                        
+                elif playerDodgeChance == enemyHitChance:
+                    
+                    playerTieBreaker = random.random ()
+                    enemyTieBreaker = random.random ()
+                    
+                    # just in case they actually roll the same number again >.>        
+                    while enemyTieBreaker == playerTieBreaker:
+                            
+                            playerTieBreaker = random.random ()
+                            enemyTieBreaker = random.random ()
+                        
+                        # if the enemy wins the tie breaker, they start. otherwise nothing happens and player starts by default
+                    if enemyTieBreaker > playerTieBreaker:
+                        
+                        enemyAtk = enemyStrTemp + rollTheDice (50)    
+                        print (f'The enemy attacks with {enemyAtk} damage!')
+                        playerDmgProt = playerDefTemp / 100    
+                        dmgOnPlayer = playerDmgProt * enemyAtk    
+                        playerVitTemp -= dmgOnPlayer
+                        print (f'The enemy deals {dmgOnPlayer} damage.')                            
+                        print (f'You have {playerVitTemp}Hp remaining.')
+                
 
 
 # Class choice function
