@@ -4,8 +4,10 @@ import random
 #Player Level
 playerLevel = 1
 
+#Player class
+playerClass = ""
 #Class Stats
-playerStr = 0
+playerStr = 0 
 playerInt = 0
 playerVit = 0
 playerDex = 0
@@ -13,6 +15,8 @@ playerSpd = 0
 playerIns = 0
 playerDef = 0
 playerLuck = 0
+
+
 
 #Tier 1 Mobs
 tinyRaptor = {
@@ -435,6 +439,7 @@ def chooseClass():
     global playerLuck
     global playerIns
     global playerDef
+    global playerClass
     chooseClass = 0
     while chooseClass not in [1, 2, 3]:
         chooseClass = int(input("There are 3 classes. Archer, Warrior and Mage. Which one would you like to start your journey with? Type 1 for Archer, 2 for Warrior or 3 for Mage: "))
@@ -447,6 +452,7 @@ def chooseClass():
             playerLuck = 15
             playerIns = 5
             playerDef = 10
+            playerClass = "Archer"
             print("You are an Archer!")
             break
         elif chooseClass == 2:
@@ -458,6 +464,7 @@ def chooseClass():
             playerLuck = 5
             playerIns = 5
             playerDef = 15
+            playerClass = "Warrior"
             print("Your are a Warrior!")
             break
         else:
@@ -469,10 +476,11 @@ def chooseClass():
             playerLuck = 15
             playerIns = 15
             playerDef = 5
+            playerClass = "Mage"
             print("You are a Mage!")
             break
             
-    return playerStr, playerInt, playerVit, playerDex, playerSpd, playerLuck, playerIns, playerDef
+    return playerStr, playerInt, playerVit, playerDex, playerSpd, playerLuck, playerIns, playerDef, playerClass
 
 
 # Random mob encounter
@@ -528,7 +536,7 @@ def mobEncounter(tierChoice): # Insert a tier in the range of 1-4 as an argument
 
 
 # Level up function
-def levelUp():
+def levelUp(tempPlayerClass): # Insert "playerClass" variable as argument
     global playerLevel
     global playerStr
     global playerInt 
@@ -541,10 +549,46 @@ def levelUp():
 
     playerLevel += 1
 
+    if tempPlayerClass == "Archer":
+        playerStr += 1
+        playerInt += 1
+        playerVit += 1
+        playerIns += 1
+        playerDef += 1
+
+        playerDex += 3
+        playerSpd += 3
+        playerLuck += 3
+
+
+    elif tempPlayerClass == "Warrior":
+        playerDex += 1
+        playerInt += 1
+        playerSpd += 1
+        playerIns += 1
+        playerLuck += 1
+
+        playerStr += 3
+        playerVit += 3
+        playerDef += 3
+
+    elif tempPlayerClass == "Mage":
+        playerDex += 1
+        playerSpd += 1
+        playerStr += 1
+        playerVit += 1
+        playerDef += 1
+
+        playerInt += 3
+        playerIns += 3
+        playerLuck += 3
+
+    
+
     print(f"You leveled up! You are now level {playerLevel}")
 
 
-    return playerLevel
+    return playerLevel, playerStr, playerInt, playerVit, playerIns, playerDef, playerDex, playerSpd, playerLuck
 
         
 
@@ -582,9 +626,13 @@ def startChapter1():
 
 
 
-
 #Test Area
-levelUp()
-levelUp()
-levelUp()
-levelUp()
+
+chooseClass()
+print(playerClass)
+levelUp(playerClass)
+print(f"Str: {playerStr}, Spd: {playerSpd}, Def: {playerDef}, Int: {playerInt}, Dex: {playerDex}, Ins: {playerIns}, Luck: {playerLuck}, Vit: {playerVit}")
+levelUp(playerClass)
+print(f"Str: {playerStr}, Spd: {playerSpd}, Def: {playerDef}, Int: {playerInt}, Dex: {playerDex}, Ins: {playerIns}, Luck: {playerLuck}, Vit: {playerVit}")
+levelUp(playerClass)
+print(f"Str: {playerStr}, Spd: {playerSpd}, Def: {playerDef}, Int: {playerInt}, Dex: {playerDex}, Ins: {playerIns}, Luck: {playerLuck}, Vit: {playerVit}")
