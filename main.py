@@ -5,14 +5,14 @@ import random
 playerLevel = 1
 
 #Class Stats
-playerStr = 5
-playerInt = 5
-playerVit = 5
-playerDex = 5
-playerSpd = 5
-playerIns = 5
-playerDef = 5
-playerLuck = 5
+playerStr = 0
+playerInt = 0
+playerVit = 0
+playerDex = 0
+playerSpd = 0
+playerIns = 0
+playerDef = 0
+playerLuck = 0
 
 #Tier 1 Mobs
 tinyRaptor = {
@@ -530,8 +530,20 @@ def mobEncounter(tierChoice): # Insert a tier in the range of 1-4 as an argument
 # Level up function
 def levelUp():
     global playerLevel
+    global playerStr
+    global playerInt 
+    global playerVit 
+    global playerDex 
+    global playerSpd 
+    global playerIns 
+    global playerDef 
+    global playerLuck
+
     playerLevel += 1
+
     print(f"You leveled up! You are now level {playerLevel}")
+
+
     return playerLevel
 
         
@@ -573,4 +585,6 @@ def startChapter1():
 
 #Test Area
 levelUp()
-print(playerLevel)
+levelUp()
+levelUp()
+levelUp()
