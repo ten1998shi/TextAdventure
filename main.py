@@ -16,7 +16,19 @@ playerIns = 0
 playerDef = 0
 playerLuck = 0
 
+#Player Exp
+playerExp = 0
 
+# Player Inventory
+playerInventory = {
+    "Weapon": "",
+    "Armor": "",
+    "Gloves": "",
+    "Boots": "",
+    "Ring slot 1": "",
+    "Ring slot 2": "",
+    "Necklace": ""
+}
 
 #Tier 1 Mobs
 tinyRaptor = {
