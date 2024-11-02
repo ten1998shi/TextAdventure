@@ -401,29 +401,29 @@ def rollTheDice (tempPlayerLck):
 
 #Combat Function
   
-def startCombat (playerStrTemp, playerSpdTemp, playerDefTemp, playerVitTemp, enemyDefTemp, enemyVitTemp, enemyStrTemp, enemySpdTemp):
+def startCombat (playerStrTemp, playerSpdTemp, playerDefTemp, playerVitTemp, enemyDefTemp, enemyVitTemp, enemyStrTemp, enemySpdTemp, playerExp, global levelUpExp):
     
-    print ('Combat starts!')
+    input ('Combat starts!')
     
     # check if enemy is actually faster and thus goes first
     if enemySpdTemp > playerSpdTemp:            
         
-        print ('The enemy starts the round!')
+        input ('The enemy starts the round!')
         
         playerDodgeChance = playerSpdTemp / 200
         enemyHitChance = random.random ()
 
         if playerDodgeChance > enemyHitChance:
-            print ('You dodged the attack!')
+            input ('You dodged the attack!')
                     
         elif playerDodgeChance < enemyHitChance:        
             enemyAtk = enemyStrTemp + rollTheDice (50)        
-            print (f'The enemy attacks with {enemyAtk} damage!')
+            input (f'The enemy attacks with {enemyAtk} damage!')
             playerDmgProt = playerDefTemp / 100    
             dmgOnPlayer = playerDmgProt * enemyAtk    
             playerVitTemp -= dmgOnPlayer
-            print (f'The enemy deals {dmgOnPlayer} damage.')
-            print (f'You have {playerVitTemp}Hp remaining.')
+            input (f'The enemy deals {dmgOnPlayer} damage.')
+            input (f'You have {playerVitTemp}Hp remaining.')
                     
                         
         elif playerDodgeChance == enemyHitChance:
@@ -441,12 +441,12 @@ def startCombat (playerStrTemp, playerSpdTemp, playerDefTemp, playerVitTemp, ene
                 if enemyTieBreaker > playerTieBreaker:
                         
                     enemyAtk = enemyStrTemp + rollTheDice (50)    
-                    print (f'The enemy attacks with {enemyAtk} damage!')
+                    input (f'The enemy attacks with {enemyAtk} damage!')
                     playerDmgProt = playerDefTemp / 100    
                     dmgOnPlayer = playerDmgProt * enemyAtk    
                     playerVitTemp -= dmgOnPlayer
-                    print (f'The enemy deals {dmgOnPlayer} damage.')
-                    print (f'You have {playerVitTemp}Hp remaining.')
+                    input (f'The enemy deals {dmgOnPlayer} damage.')
+                    input (f'You have {playerVitTemp}Hp remaining.')
         
     # if both are the same speed, they roll a number between 0-1 and the larger number wins    
     elif enemySpdTemp == playerSpdTemp:
@@ -463,13 +463,36 @@ def startCombat (playerStrTemp, playerSpdTemp, playerDefTemp, playerVitTemp, ene
         # if the enemy wins the tie breaker, they start. otherwise nothing happens and player starts by default
         if enemyTieBreaker > playerTieBreaker:
             
-            enemyAtk = enemyStrTemp + rollTheDice ()    
-            print (f'The enemy attacks with {enemyAtk} damage!')
-            playerDmgProt = playerDefTemp / 100    
-            dmgOnPlayer = playerDmgProt * enemyAtk    
-            playerVitTemp -= dmgOnPlayer
-            print (f'The enemy deals {dmgOnPlayer} damage.')
-            print (f'You have {playerVitTemp}Hp remaining.')
+            playerDodgeChance = playerSpdTemp / 200
+            enemyHitChance = random.random ()
+            
+            if playerDodgeChance > enemyHitChance:
+                input ('You dodged the attack!')
+                                             
+            elif playerDodgeChance == enemyHitChance:
+                    
+                playerTieBreaker = random.random ()
+                enemyTieBreaker = random.random ()
+                    
+                # just in case they actually roll the same number again >.>        
+                while enemyTieBreaker == playerTieBreaker:
+                            
+                    playerTieBreaker = random.random ()
+                    enemyTieBreaker = random.random ()
+                        
+               
+                # if the enemy wins the tie breaker, they start. otherwise nothing happens and player starts by default
+                if enemyTieBreaker > playerTieBreaker:
+                        
+                    enemyAtk = enemyStrTemp + rollTheDice (50)    
+                    input (f'The enemy attacks with {enemyAtk} damage!')
+                    playerDmgProt = playerDefTemp / 100    
+                    dmgOnPlayer = playerDmgProt * enemyAtk    
+                    playerVitTemp -= dmgOnPlayer
+                    input (f'The enemy deals {dmgOnPlayer} damage.')
+                    input (f'You have {playerVitTemp}Hp remaining.')
+            
+            
             
             
             
@@ -480,29 +503,89 @@ def startCombat (playerStrTemp, playerSpdTemp, playerDefTemp, playerVitTemp, ene
             
             if playerChoice == 'attack': 
         
-                playerAtk = playerStrTemp + rollTheDice (50)   
-                print (f'You attack with {playerAtk} damage!')     
-                enemyDmgProt = enemyDefTemp / 100        
-                dmgOnEnemy = enemyDmgProt * playerAtk        
-                enemyVitTemp - dmgOnEnemy
-                print (f'You deal {dmgOnEnemy} damage.')
-                print (f'Enemy has {enemyVitTemp}Hp remaining.')
+                enemyDodgeChance = enemySpdTemp / 200
+                playerHitChance = random.random ()
+
+                if enemyDodgeChance > playerHitChance:
+                    input ('The enemy dodged the attack!')
+                            
+                elif enemyDodgeChance < playerHitChance:        
+                    playerAtk = playerStrTemp + rollTheDice (50)        
+                    input (f'You attack with {playerAtk} damage!')
+                    enemyDmgProt = enemyDefTemp / 100    
+                    dmgOnEnemy = enemyDmgProt * playerAtk    
+                    enemyVitTemp -= dmgOnEnemy
+                    input (f'You deal {dmgOnEnemy} damage.')
+                    input (f'The enemy has {enemyVitTemp}Hp remaining.')
+                    
+                    if enemyVitTemp <= 0:
+                        input ('Sweet victory at last! All hail the glorious wall kitten!')
+                        
+                        expGainedAfterCombat(2)
+
+                        while playerExp > levelUpExp:
+                            levelUpExp = levelUpExp + levelUpExp
+                        
+                        break
+                        
+                        
+                        
+                        
+                        
+                            
+                                
+                elif playerDodgeChance == enemyHitChance:
+                            
+                        playerTieBreaker = random.random ()
+                        enemyTieBreaker = random.random ()
+                            
+                        # just in case they actually roll the same number again >.>        
+                        while enemyTieBreaker == playerTieBreaker:
+                                    
+                            playerTieBreaker = random.random ()
+                            enemyTieBreaker = random.random ()
+                                
+                            # if the enemy wins the tie breaker, they start. otherwise nothing happens and player starts by default
+                        if enemyTieBreaker > playerTieBreaker:
+                                
+                            playerAtk = playerStrTemp + rollTheDice (50)        
+                            input (f'You attack with {playerAtk} damage!')
+                            enemyDmgProt = enemyDefTemp / 100    
+                            dmgOnEnemy = enemyDmgProt * playerAtk    
+                            enemyVitTemp -= dmgOnEnemy
+                            input (f'You deal {dmgOnEnemy} damage.')
+                            input (f'The enemy has {enemyVitTemp}Hp remaining.')
+                            
+                            if enemyVitTemp <= 0:
+                                input ('Sweet victory at last! All hail the glorious wall kitten!')   
+                                
+                                expGainedAfterCombat(2)
+
+                                while playerExp > levelUpExp:
+                                    levelUpExp = levelUpExp + levelUpExp
+                        
+                                break
+                
                                 
                 playerDodgeChance = playerSpdTemp / 200
                 enemyHitChance = random.random ()
 
                 if playerDodgeChance > enemyHitChance:
-                    print ('You dodged the attack!')
+                    input ('You dodged the attack!')
                     
                 elif playerDodgeChance < enemyHitChance:
                     
                     enemyAtk = enemyStrTemp + rollTheDice (50)        
-                    print (f'The enemy attacks with {enemyAtk} damage!')
+                    input (f'The enemy attacks with {enemyAtk} damage!')
                     playerDmgProt = playerDefTemp / 100    
                     dmgOnPlayer = playerDmgProt * enemyAtk    
                     playerVitTemp -= dmgOnPlayer
-                    print (f'The enemy deals {dmgOnPlayer} damage.')
-                    print (f'You have {playerVitTemp}Hp remaining.')
+                    input (f'The enemy deals {dmgOnPlayer} damage.')
+                    input (f'You have {playerVitTemp}Hp remaining.')
+                    
+                    if playerVitTemp <= 0:
+                        input ('You died, the wall kitten is mildy displeased.')
+                        break
                     
                         
                 elif playerDodgeChance == enemyHitChance:
@@ -520,12 +603,17 @@ def startCombat (playerStrTemp, playerSpdTemp, playerDefTemp, playerVitTemp, ene
                     if enemyTieBreaker > playerTieBreaker:
                         
                         enemyAtk = enemyStrTemp + rollTheDice (50)    
-                        print (f'The enemy attacks with {enemyAtk} damage!')
+                        input (f'The enemy attacks with {enemyAtk} damage!')
                         playerDmgProt = playerDefTemp / 100    
                         dmgOnPlayer = playerDmgProt * enemyAtk    
                         playerVitTemp -= dmgOnPlayer
-                        print (f'The enemy deals {dmgOnPlayer} damage.')
-                        print (f'You have {playerVitTemp}Hp remaining.')
+                        input (f'The enemy deals {dmgOnPlayer} damage.')
+                        input (f'You have {playerVitTemp}Hp remaining.')
+                        
+                        if playerVitTemp <= 0:
+                            input ('You died, the wall kitten is mildy displeased.')
+                            break
+                        
 
             elif playerChoice == 'defend':
                                 
@@ -533,18 +621,22 @@ def startCombat (playerStrTemp, playerSpdTemp, playerDefTemp, playerVitTemp, ene
                 enemyHitChance = random.random ()
 
                 if playerDodgeChance > enemyHitChance:
-                    print ('You dodged the attack!')
+                    input ('You dodged the attack!')
                     
                 elif playerDodgeChance < enemyHitChance:
                     
                     enemyAtk = enemyStrTemp + rollTheDice (50)
-                    print (f'The enemy attacks with {enemyAtk} damage!')
+                    input (f'The enemy attacks with {enemyAtk} damage!')
                     playerDmgProt = playerDefTemp / 100 
                     playerDmgProt = playerDmgProt * 2   
                     dmgOnPlayer = playerDmgProt * enemyAtk    
                     playerVitTemp -= dmgOnPlayer
-                    print (f'The enemy deals {dmgOnPlayer} damage.')
-                    print (f'You have {playerVitTemp}Hp remaining.')
+                    input (f'The enemy deals {dmgOnPlayer} damage.')
+                    input (f'You have {playerVitTemp}Hp remaining.')
+                    
+                    if playerVitTemp <= 0:
+                        input ('You died, the wall kitten is mildy displeased.')
+                        break
                     
                         
                 elif playerDodgeChance == enemyHitChance:
@@ -562,13 +654,17 @@ def startCombat (playerStrTemp, playerSpdTemp, playerDefTemp, playerVitTemp, ene
                     if enemyTieBreaker > playerTieBreaker:
                         
                         enemyAtk = enemyStrTemp + rollTheDice (50)
-                        print (f'The enemy attacks with {enemyAtk} damage!')
+                        input (f'The enemy attacks with {enemyAtk} damage!')
                         playerDmgProt = playerDefTemp / 100 
                         playerDmgProt = playerDmgProt * 2   
                         dmgOnPlayer = playerDmgProt * enemyAtk    
                         playerVitTemp -= dmgOnPlayer
-                        print (f'The enemy deals {dmgOnPlayer} damage.')
-                        print (f'You have {playerVitTemp}Hp remaining.')
+                        input (f'The enemy deals {dmgOnPlayer} damage.')
+                        input (f'You have {playerVitTemp}Hp remaining.')
+                        
+                        if playerVitTemp <= 0:
+                            input ('You died, the wall kitten is mildy displeased.')
+                            break
             
             elif playerChoice == 'item':
                 
@@ -582,17 +678,21 @@ def startCombat (playerStrTemp, playerSpdTemp, playerDefTemp, playerVitTemp, ene
                 enemyHitChance = random.random ()
 
                 if playerDodgeChance > enemyHitChance:
-                    print ('You dodged the attack!')
+                    input ('You dodged the attack!')
                     
                 elif playerDodgeChance < enemyHitChance:
                     
                     enemyAtk = enemyStrTemp + rollTheDice (50)        
-                    print (f'The enemy attacks with {enemyAtk} damage!')
+                    input (f'The enemy attacks with {enemyAtk} damage!')
                     playerDmgProt = playerDefTemp / 100    
                     dmgOnPlayer = playerDmgProt * enemyAtk    
                     playerVitTemp -= dmgOnPlayer
-                    print (f'The enemy deals {dmgOnPlayer} damage.')
-                    print (f'You have {playerVitTemp}Hp remaining.')
+                    input (f'The enemy deals {dmgOnPlayer} damage.')
+                    input (f'You have {playerVitTemp}Hp remaining.')
+                    
+                    if playerVitTemp <= 0:
+                        input ('You died, the wall kitten is mildy displeased.')
+                        break
                     
                         
                 elif playerDodgeChance == enemyHitChance:
@@ -610,12 +710,16 @@ def startCombat (playerStrTemp, playerSpdTemp, playerDefTemp, playerVitTemp, ene
                     if enemyTieBreaker > playerTieBreaker:
                         
                         enemyAtk = enemyStrTemp + rollTheDice (50)    
-                        print (f'The enemy attacks with {enemyAtk} damage!')
+                        input (f'The enemy attacks with {enemyAtk} damage!')
                         playerDmgProt = playerDefTemp / 100    
                         dmgOnPlayer = playerDmgProt * enemyAtk    
                         playerVitTemp -= dmgOnPlayer                          
-                        print (f'The enemy deals {dmgOnPlayer} damage.')
-                        print (f'You have {playerVitTemp}Hp remaining.')    
+                        input (f'The enemy deals {dmgOnPlayer} damage.')
+                        input (f'You have {playerVitTemp}Hp remaining.')    
+                        
+                        if playerVitTemp <= 0:
+                            input ('You died, the wall kitten is mildy displeased.')
+                            break
                 
             elif playerChoice == 'talk':
                 
@@ -628,17 +732,21 @@ def startCombat (playerStrTemp, playerSpdTemp, playerDefTemp, playerVitTemp, ene
                 enemyHitChance = random.random ()
 
                 if playerDodgeChance > enemyHitChance:
-                    print ('You dodged the attack!')
+                    input ('You dodged the attack!')
                     
                 elif playerDodgeChance < enemyHitChance:
                     
                     enemyAtk = enemyStrTemp + rollTheDice (50)        
-                    print (f'The enemy attacks with {enemyAtk} damage!')
+                    input (f'The enemy attacks with {enemyAtk} damage!')
                     playerDmgProt = playerDefTemp / 100    
                     dmgOnPlayer = playerDmgProt * enemyAtk    
                     playerVitTemp -= dmgOnPlayer
-                    print (f'The enemy deals {dmgOnPlayer} damage.')
-                    print (f'You have {playerVitTemp}Hp remaining.')
+                    input (f'The enemy deals {dmgOnPlayer} damage.')
+                    input (f'You have {playerVitTemp}Hp remaining.')
+                    
+                    if playerVitTemp <= 0:
+                        input ('You died, the wall kitten is mildy displeased.')
+                        break
                     
                         
                 elif playerDodgeChance == enemyHitChance:
@@ -656,12 +764,16 @@ def startCombat (playerStrTemp, playerSpdTemp, playerDefTemp, playerVitTemp, ene
                     if enemyTieBreaker > playerTieBreaker:
                         
                         enemyAtk = enemyStrTemp + rollTheDice (50)    
-                        print (f'The enemy attacks with {enemyAtk} damage!')
+                        input (f'The enemy attacks with {enemyAtk} damage!')
                         playerDmgProt = playerDefTemp / 100    
                         dmgOnPlayer = playerDmgProt * enemyAtk    
                         playerVitTemp -= dmgOnPlayer
-                        print (f'The enemy deals {dmgOnPlayer} damage.')                            
-                        print (f'You have {playerVitTemp}Hp remaining.')
+                        input (f'The enemy deals {dmgOnPlayer} damage.')                            
+                        input (f'You have {playerVitTemp}Hp remaining.')
+                        
+                        if playerVitTemp <= 0:
+                            input ('You died, the wall kitten is mildy displeased.')
+                            break
                 
 
 
