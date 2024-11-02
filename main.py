@@ -17,7 +17,8 @@ playerDef = 0
 playerLuck = 0
 
 #Player Exp
-playerExp = 0
+playerExp = 0 
+levelUpExp = 10
 
 # Player Inventory
 playerInventory = {
@@ -805,7 +806,18 @@ def levelUp(tempPlayerClass): # Insert "playerClass" variable as argument
 
     return playerLevel, playerStr, playerInt, playerVit, playerIns, playerDef, playerDex, playerSpd, playerLuck
 
-        
+def expGainedAfterCombat(tempMonsterTier): # Random Number of EXP based on monster tier
+    global playerExp
+    if tempMonsterTier == 1:
+        playerExp += random.randint(5, 10)
+    elif tempMonsterTier == 2:
+        playerExp += random.randint(15, 25)
+    elif tempMonsterTier ==  3:
+        playerExp += random.randint(40, 50)
+    elif tempMonsterTier == 4:
+        playerExp += random.randint(70, 85)
+    
+    return playerExp      
 
 # Chapter 1 function
 def startChapter1():
@@ -843,11 +855,19 @@ def startChapter1():
 
 #Test Area
 
-chooseClass()
+"""chooseClass()
 print(playerClass)
 levelUp(playerClass)
 print(f"Str: {playerStr}, Spd: {playerSpd}, Def: {playerDef}, Int: {playerInt}, Dex: {playerDex}, Ins: {playerIns}, Luck: {playerLuck}, Vit: {playerVit}")
 levelUp(playerClass)
 print(f"Str: {playerStr}, Spd: {playerSpd}, Def: {playerDef}, Int: {playerInt}, Dex: {playerDex}, Ins: {playerIns}, Luck: {playerLuck}, Vit: {playerVit}")
 levelUp(playerClass)
-print(f"Str: {playerStr}, Spd: {playerSpd}, Def: {playerDef}, Int: {playerInt}, Dex: {playerDex}, Ins: {playerIns}, Luck: {playerLuck}, Vit: {playerVit}")
+print(f"Str: {playerStr}, Spd: {playerSpd}, Def: {playerDef}, Int: {playerInt}, Dex: {playerDex}, Ins: {playerIns}, Luck: {playerLuck}, Vit: {playerVit}")"""
+
+#to do´s
+#Function to track exp = > pass to combat function = > 
+
+
+
+
+
