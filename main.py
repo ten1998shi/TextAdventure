@@ -381,7 +381,9 @@ def rollTheDice (tempPlayerLck):
 
 #Combat Function
   
-def startCombat (playerStrTemp, playerSpdTemp, playerDefTemp, playerVitTemp, enemyDefTemp, enemyVitTemp, enemyStrTemp, enemySpdTemp, playerExp, global levelUpExp):
+def startCombat (playerStrTemp, playerSpdTemp, playerDefTemp, playerVitTemp, enemyDefTemp, enemyVitTemp, enemyStrTemp, enemySpdTemp):
+    
+    global levelUpExp
     
     input ('Combat starts!')
     
