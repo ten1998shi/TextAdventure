@@ -401,10 +401,8 @@ def rollTheDice (tempPlayerLck):
 
 #Combat Function
   
-def startCombat (playerStrTemp, playerSpdTemp, playerDefTemp, playerVitTemp, enemyDefTemp, enemyVitTemp, enemyStrTemp, enemySpdTemp):
-    
-    global levelUpExp
-    
+def startCombat (playerStrTemp, playerSpdTemp, playerDefTemp, playerVitTemp, enemyDefTemp, enemyVitTemp, enemyStrTemp, enemySpdTemp, playerExp):
+    global levelUpExp 
     input ('Combat starts!')
     
     # check if enemy is actually faster and thus goes first
@@ -955,33 +953,37 @@ def expGainedAfterCombat(tempMonsterTier): # Random Number of EXP based on monst
 
 # Chapter 1 function
 def startChapter1():
-    print("To choose dialog options type 1, 2, 3")
-    
-    print("Welcome to insertGameName")
-    
+    userChoice = 0
+
+    print("NPC/Narator Text")
+
     chooseClass()
 
-    print("Insert Text")
-    #Dialog options
-    print("Dialog option 1")
-    print("Dialog option 2") 
-    print("Dialog option 3") 
-    Ch1Dialog1Choice = 0
-    Ch1Dialog1Choice = int(input("Filler Text")) # Player selects dialog option via numbers (1, 2 , 3)
-    while Ch1Dialog1Choice not in [1, 2 , 3]:
-         Ch1Dialog1Choice = int(input("Filler Text")) # Player selects dialog option via numbers (1, 2 , 3)
-         if Ch1Dialog1Choice == 1 or Ch1Dialog1Choice == 2 or  Ch1Dialog1Choice == 3:
+    print("NPC/Narator Text")
+
+    print("1. Random battle encounter")
+    print("2. Dialog option (Continue)")
+    print("3. Dialog option (Continue)")
+    print("4. Check your Level, Class and Stats")
+
+    userChoice = int(input("Press 1 2 3 or 4 to Continue "))
+    while userChoice == 1:
+        startCombat()
+        userChoice = int(input("Press 1 2 3 or 4 to Continue "))
+
+        if userChoice == 2 or userChoice == 3:
             break
-        
-    if Ch1Dialog1Choice == 1:
-        print(mobEncounter(1))                      # to be changed
-        #startCombat()                              # to be changed
-        
-    elif Ch1Dialog1Choice == 2:
-        print("Filler")                     # to be changed
-        
-    elif Ch1Dialog1Choice == 3:
-        print("Filler")                     # to be changed
+
+    while userChoice == 4:
+        print(f"Your Level: {playerLevel}")
+        print(f"Class: {playerClass}")
+        print(f"Str: {playerStr}, Spd: {playerSpd}, Def: {playerDef}, Int: {playerInt}, Dex: {playerDex}, Ins: {playerIns}, Luck: {playerLuck}, Vit: {playerVit}")
+      
+
+        userChoice = int(input("Press 1 2 3 or 4 to Continue "))
+        if userChoice == 2 or userChoice == 3:
+            break
+
         
 
 
