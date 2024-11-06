@@ -381,7 +381,7 @@ def rollTheDice (tempPlayerLck):
 
 #Combat Function
   
-def startCombat (playerStrTemp, playerSpdTemp, playerDefTemp, playerVitTemp, enemyDefTemp, enemyVitTemp, enemyStrTemp, enemySpdTemp):
+def startCombat (playerVitTemp, playerStrTemp, playerDefTemp, playerSpdTemp, enemyVitTemp, enemyStrTemp, enemyDefTemp, enemySpdTemp):
     
     global levelUpExp
     
@@ -980,8 +980,3 @@ print(f"Str: {playerStr}, Spd: {playerSpd}, Def: {playerDef}, Int: {playerInt}, 
 
 #to do´s
 #Function to track exp = > pass to combat function = > 
-
-
-
-
-
