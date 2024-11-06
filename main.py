@@ -33,6 +33,7 @@ playerInventory = {
 
 #Tier 1 Mobs
 tinyRaptor = {
+    "Tier": "1",
     "name": "Tiny Raptor",
     "str": "5",
     "int": "1",
@@ -45,6 +46,7 @@ tinyRaptor = {
 }
 
 caveSpider = {
+    "Tier": "1",
     "name": "Cave Spider",
     "str": "3",
     "int": "1",
@@ -57,6 +59,7 @@ caveSpider = {
 }
 
 grublingWorm = {
+    "Tier": "1",
     "name":"Grubling Worm",
     "str": "1",
     "int": "1",
@@ -69,6 +72,7 @@ grublingWorm = {
 }
 
 whiskerRat = {
+    "Tier": "1",
     "name": "Whisker Rat",
     "str": "3",
     "int": "1",
@@ -81,6 +85,7 @@ whiskerRat = {
 }
 
 duskbatHatchling = {
+    "Tier": "1",
     "name": "Duskbat Hatchling",
     "str": "1",
     "int": "1",
@@ -95,6 +100,7 @@ duskbatHatchling = {
 #Tier 2 Mobs
 
 squeakclawDrake = {
+    "Tier": "2",
     "name": "Squeak Claw Drake",
     "str": "15",
     "int": "5",
@@ -107,6 +113,7 @@ squeakclawDrake = {
 }
 
 frostlingSprite = {
+    "Tier": "2",
     "name": "Frostling Sprite",
     "str": "5",
     "int": "25",
@@ -119,6 +126,7 @@ frostlingSprite = {
 }
 
 twitchfangBat = {
+    "Tier": "2",
     "name": "Twitch Fang Bat",
     "str": "5",
     "int": "5",
@@ -131,6 +139,7 @@ twitchfangBat = {
 }
 
 feralGnat = {
+    "Tier": "2",
     "name": "Feral Gnat",
     "str": "20",
     "int": "2",
@@ -143,6 +152,7 @@ feralGnat = {
 }
 
 pufftailRabbit = {
+    "Tier": "2",
     "name": "Puff Tail Rabbit",
     "str": "10",
     "int": "3",
@@ -157,6 +167,7 @@ pufftailRabbit = {
 #Tier 3 Mobs
 
 emberjawDrake = {
+    "Tier": "3",
     "name": "Emberjaw Drake",
     "str": "35",
     "int": "20",
@@ -169,6 +180,7 @@ emberjawDrake = {
 }
 
 vilewingHarpy = {
+    "Tier": "3",
     "name": "Vile Wing Harpy",
     "str": "15",
     "int": "20",
@@ -181,6 +193,7 @@ vilewingHarpy = {
 }
 
 frostclawLynx = {
+    "Tier": "3",
     "name": "Frostclaw Lynx",
     "str": "20",
     "int": "10",
@@ -193,6 +206,7 @@ frostclawLynx = {
 }
 
 fierceRavanger = {
+    "Tier": "3",
     "name": "Fierce Ravanger",
     "str": "40",
     "int": "5",
@@ -205,6 +219,7 @@ fierceRavanger = {
 }
 
 blightrootTreant = {
+    "Tier": "3",
     "name": "Blightroot Treant",
     "str": "15",
     "int": "10",
@@ -219,6 +234,7 @@ blightrootTreant = {
 #Tier 4 Mobs
 
 stormBasilisk = {
+    "Tier": "4",
     "name": "Storm Basilisk",
     "str": "40",
     "int": "25",
@@ -231,6 +247,7 @@ stormBasilisk = {
 }
 
 shadowStalker = {
+    "Tier": "4",
     "name": "Shadow Stalker",
     "str": "20",
     "int": "25",
@@ -243,6 +260,7 @@ shadowStalker = {
 }
 
 ironskinMinotaur = {
+    "Tier": "4",
     "name": "ironskin Minotaur",
     "str": "40",
     "int": "5",
@@ -255,6 +273,7 @@ ironskinMinotaur = {
 }
 
 firefangHydra = {
+    "Tier": "4",
     "name": "Firefang Hydra",
     "str": "60",
     "int": "10",
@@ -267,6 +286,7 @@ firefangHydra = {
 }
 
 legendaryManticore = {
+    "Tier": "4",
     "name": "Legendary Manticore",
     "str": "45",
     "int": "45",
@@ -381,10 +401,15 @@ def rollTheDice (tempPlayerLck):
 
 #Combat Function
   
+<<<<<<< HEAD
 def startCombat (playerVitTemp, playerStrTemp, playerDefTemp, playerSpdTemp, enemyVitTemp, enemyStrTemp, enemyDefTemp, enemySpdTemp):
     
     global levelUpExp
     
+=======
+def startCombat (playerStrTemp, playerSpdTemp, playerDefTemp, playerVitTemp, enemyDefTemp, enemyVitTemp, enemyStrTemp, enemySpdTemp, playerExp):
+    global levelUpExp 
+>>>>>>> fbe56cfb05587547422aa7b7efb12496486aecae
     input ('Combat starts!')
     
     # check if enemy is actually faster and thus goes first
@@ -935,33 +960,37 @@ def expGainedAfterCombat(tempMonsterTier): # Random Number of EXP based on monst
 
 # Chapter 1 function
 def startChapter1():
-    print("To choose dialog options type 1, 2, 3")
-    
-    print("Welcome to insertGameName")
-    
+    userChoice = 0
+
+    print("NPC/Narator Text")
+
     chooseClass()
 
-    print("Insert Text")
-    #Dialog options
-    print("Dialog option 1")
-    print("Dialog option 2") 
-    print("Dialog option 3") 
-    Ch1Dialog1Choice = 0
-    Ch1Dialog1Choice = int(input("Filler Text")) # Player selects dialog option via numbers (1, 2 , 3)
-    while Ch1Dialog1Choice not in [1, 2 , 3]:
-         Ch1Dialog1Choice = int(input("Filler Text")) # Player selects dialog option via numbers (1, 2 , 3)
-         if Ch1Dialog1Choice == 1 or Ch1Dialog1Choice == 2 or  Ch1Dialog1Choice == 3:
+    print("NPC/Narator Text")
+
+    print("1. Random battle encounter")
+    print("2. Dialog option (Continue)")
+    print("3. Dialog option (Continue)")
+    print("4. Check your Level, Class and Stats")
+
+    userChoice = int(input("Press 1 2 3 or 4 to Continue "))
+    while userChoice == 1:
+        startCombat()
+        userChoice = int(input("Press 1 2 3 or 4 to Continue "))
+
+        if userChoice == 2 or userChoice == 3:
             break
-        
-    if Ch1Dialog1Choice == 1:
-        print(mobEncounter(1))                      # to be changed
-        #startCombat()                              # to be changed
-        
-    elif Ch1Dialog1Choice == 2:
-        print("Filler")                     # to be changed
-        
-    elif Ch1Dialog1Choice == 3:
-        print("Filler")                     # to be changed
+
+    while userChoice == 4:
+        print(f"Your Level: {playerLevel}")
+        print(f"Class: {playerClass}")
+        print(f"Str: {playerStr}, Spd: {playerSpd}, Def: {playerDef}, Int: {playerInt}, Dex: {playerDex}, Ins: {playerIns}, Luck: {playerLuck}, Vit: {playerVit}")
+      
+
+        userChoice = int(input("Press 1 2 3 or 4 to Continue "))
+        if userChoice == 2 or userChoice == 3:
+            break
+
         
 
 
@@ -979,4 +1008,13 @@ levelUp(playerClass)
 print(f"Str: {playerStr}, Spd: {playerSpd}, Def: {playerDef}, Int: {playerInt}, Dex: {playerDex}, Ins: {playerIns}, Luck: {playerLuck}, Vit: {playerVit}")"""
 
 #to do´s
+<<<<<<< HEAD
 #Function to track exp = > pass to combat function = > 
+=======
+#Function to track exp = > pass to combat function = > 
+
+
+
+startChapter1()
+
+>>>>>>> fbe56cfb05587547422aa7b7efb12496486aecae
