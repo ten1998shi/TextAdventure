@@ -19,6 +19,7 @@ playerLuck = 0
 #Player Exp
 playerExp = 0 
 levelUpExp = 10
+currentMob = 0
 
 # Player Inventory
 playerInventory = {
@@ -401,15 +402,8 @@ def rollTheDice (tempPlayerLck):
 
 #Combat Function
   
-<<<<<<< HEAD
-def startCombat (playerVitTemp, playerStrTemp, playerDefTemp, playerSpdTemp, enemyVitTemp, enemyStrTemp, enemyDefTemp, enemySpdTemp):
-    
-    global levelUpExp
-    
-=======
 def startCombat (playerStrTemp, playerSpdTemp, playerDefTemp, playerVitTemp, enemyDefTemp, enemyVitTemp, enemyStrTemp, enemySpdTemp, playerExp):
     global levelUpExp 
->>>>>>> fbe56cfb05587547422aa7b7efb12496486aecae
     input ('Combat starts!')
     
     # check if enemy is actually faster and thus goes first
@@ -958,6 +952,50 @@ def expGainedAfterCombat(tempMonsterTier): # Random Number of EXP based on monst
     
     return playerExp      
 
+def tierOneFight():
+    global currentMob
+    global playerClass
+    currentMob = mobEncounter(1)
+    startCombat(playerVit, playerDef, playerStr, playerSpd, int (currentMob ['vit']), int (currentMob ['str']), int (currentMob ['def']), int (currentMob ['spd']))
+    expGainedAfterCombat(1)
+    while playerExp > levelUpExp:
+        levelUp(playerClass)
+        levelUpExp = levelUpExp + levelUpExp
+        break
+
+
+def tierTwoFight():
+    global currentMob
+    global playerClass
+    currentMob = mobEncounter(2)
+    startCombat(playerVit, playerDef, playerStr, playerSpd, int (currentMob ['vit']), int (currentMob ['str']), int (currentMob ['def']), int (currentMob ['spd']))
+    expGainedAfterCombat(2)
+    while playerExp > levelUpExp:
+        levelUp(playerClass)
+        levelUpExp = levelUpExp + levelUpExp
+        break
+def tierThreeFight():
+    global currentMob
+    global playerClass
+    currentMob = mobEncounter(3)
+    startCombat(playerVit, playerDef, playerStr, playerSpd, int (currentMob ['vit']), int (currentMob ['str']), int (currentMob ['def']), int (currentMob ['spd']))
+    expGainedAfterCombat(3)
+    while playerExp > levelUpExp:
+        levelUp(playerClass)
+        levelUpExp = levelUpExp + levelUpExp
+        break     
+def tierFourFight():
+    global currentMob
+    global playerClass
+    currentMob = mobEncounter(4)
+    startCombat(playerVit, playerDef, playerStr, playerSpd, int (currentMob ['vit']), int (currentMob ['str']), int (currentMob ['def']), int (currentMob ['spd']))
+    expGainedAfterCombat(4)
+    while playerExp > levelUpExp:
+        levelUp(playerClass)
+        levelUpExp = levelUpExp + levelUpExp
+        break     
+
+
 # Chapter 1 function
 def startChapter1():
     userChoice = 0
@@ -1008,9 +1046,6 @@ levelUp(playerClass)
 print(f"Str: {playerStr}, Spd: {playerSpd}, Def: {playerDef}, Int: {playerInt}, Dex: {playerDex}, Ins: {playerIns}, Luck: {playerLuck}, Vit: {playerVit}")"""
 
 #to do´s
-<<<<<<< HEAD
-#Function to track exp = > pass to combat function = > 
-=======
 #Function to track exp = > pass to combat function = > 
 
 
@@ -1019,4 +1054,3 @@ print(f"Str: {playerStr}, Spd: {playerSpd}, Def: {playerDef}, Int: {playerInt}, 
 
 print(mobEncounter(4))
 
->>>>>>> fbe56cfb05587547422aa7b7efb12496486aecae
