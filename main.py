@@ -407,9 +407,11 @@ def startCombat (playerVitTemp, playerStrTemp, playerDefTemp, playerSpdTemp, ene
     global levelUpExp
     
 =======
-def startCombat (playerStrTemp, playerSpdTemp, playerDefTemp, playerVitTemp, enemyDefTemp, enemyVitTemp, enemyStrTemp, enemySpdTemp, playerExp):
-    global levelUpExp 
->>>>>>> fbe56cfb05587547422aa7b7efb12496486aecae
+currentMob = mobEncounter (4)
+
+def startCombat (playerVitTemp, playerStrTemp, playerDefTemp, playerSpdTemp, enemyVitTemp, enemyStrTemp, enemyDefTemp, enemySpdTemp):
+    
+    
     input ('Combat starts!')
     
     # check if enemy is actually faster and thus goes first
@@ -504,7 +506,7 @@ def startCombat (playerStrTemp, playerSpdTemp, playerDefTemp, playerVitTemp, ene
             
             
         # fighting is a loop that continues on until someone loses all their hp
-        while  playerVitTemp or enemyVitTemp > 0:    
+    while  playerVitTemp or enemyVitTemp > 0:    
             
             playerChoice = input ('Choose your action (attack, defend, item, talk): ')
             
@@ -781,6 +783,9 @@ def startCombat (playerStrTemp, playerSpdTemp, playerDefTemp, playerVitTemp, ene
                         if playerVitTemp <= 0:
                             input ('You died, the wall kitten is mildy displeased.')
                             break
+                
+
+startCombat (playerVit, playerDef, playerStr, playerSpd, int (currentMob ['vit']), int (currentMob ['str']), int (currentMob ['def']), int (currentMob ['spd']))
                 
 
 
