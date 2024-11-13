@@ -1020,6 +1020,8 @@ print(f"Str: {playerStr}, Spd: {playerSpd}, Def: {playerDef}, Int: {playerInt}, 
 
 
 
-startChapter1()
+#startChapter1()
+
+print(mobEncounter(4))
 
 >>>>>>> fbe56cfb05587547422aa7b7efb12496486aecae
