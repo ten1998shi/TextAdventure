@@ -1005,5 +1005,7 @@ print(f"Str: {playerStr}, Spd: {playerSpd}, Def: {playerDef}, Int: {playerInt}, 
 
 
 
-startChapter1()
+#startChapter1()
+
+print(mobEncounter(4))
 
