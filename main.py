@@ -401,8 +401,15 @@ def rollTheDice (tempPlayerLck):
 
 #Combat Function
   
+<<<<<<< HEAD
+def startCombat (playerVitTemp, playerStrTemp, playerDefTemp, playerSpdTemp, enemyVitTemp, enemyStrTemp, enemyDefTemp, enemySpdTemp):
+    
+    global levelUpExp
+    
+=======
 def startCombat (playerStrTemp, playerSpdTemp, playerDefTemp, playerVitTemp, enemyDefTemp, enemyVitTemp, enemyStrTemp, enemySpdTemp, playerExp):
     global levelUpExp 
+>>>>>>> fbe56cfb05587547422aa7b7efb12496486aecae
     input ('Combat starts!')
     
     # check if enemy is actually faster and thus goes first
@@ -1001,6 +1008,9 @@ levelUp(playerClass)
 print(f"Str: {playerStr}, Spd: {playerSpd}, Def: {playerDef}, Int: {playerInt}, Dex: {playerDex}, Ins: {playerIns}, Luck: {playerLuck}, Vit: {playerVit}")"""
 
 #to do´s
+<<<<<<< HEAD
+#Function to track exp = > pass to combat function = > 
+=======
 #Function to track exp = > pass to combat function = > 
 
 
@@ -1009,3 +1019,4 @@ print(f"Str: {playerStr}, Spd: {playerSpd}, Def: {playerDef}, Int: {playerInt}, 
 
 print(mobEncounter(4))
 
+>>>>>>> fbe56cfb05587547422aa7b7efb12496486aecae
