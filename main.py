@@ -402,8 +402,15 @@ def rollTheDice (tempPlayerLck):
 
 #Combat Function
   
+<<<<<<< HEAD
 def startCombat (playerStrTemp, playerSpdTemp, playerDefTemp, playerVitTemp, enemyDefTemp, enemyVitTemp, enemyStrTemp, enemySpdTemp, playerExp):
     global levelUpExp 
+=======
+currentMob = mobEncounter (4)
+
+def startCombat (playerVitTemp, playerStrTemp, playerDefTemp, playerSpdTemp, enemyVitTemp, enemyStrTemp, enemyDefTemp, enemySpdTemp):
+       
+>>>>>>> 3fe0c25b40d36cf4addadf71ac4729852a2f8701
     input ('Combat starts!')
     
     # check if enemy is actually faster and thus goes first
@@ -498,7 +505,7 @@ def startCombat (playerStrTemp, playerSpdTemp, playerDefTemp, playerVitTemp, ene
             
             
         # fighting is a loop that continues on until someone loses all their hp
-        while  playerVitTemp or enemyVitTemp > 0:    
+    while  playerVitTemp or enemyVitTemp > 0:    
             
             playerChoice = input ('Choose your action (attack, defend, item, talk): ')
             
@@ -775,6 +782,9 @@ def startCombat (playerStrTemp, playerSpdTemp, playerDefTemp, playerVitTemp, ene
                         if playerVitTemp <= 0:
                             input ('You died, the wall kitten is mildy displeased.')
                             break
+                
+
+startCombat (playerVit, playerDef, playerStr, playerSpd, int (currentMob ['vit']), int (currentMob ['str']), int (currentMob ['def']), int (currentMob ['spd']))
                 
 
 
