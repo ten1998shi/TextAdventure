@@ -401,17 +401,10 @@ def rollTheDice (tempPlayerLck):
 
 #Combat Function
   
-<<<<<<< HEAD
-def startCombat (playerVitTemp, playerStrTemp, playerDefTemp, playerSpdTemp, enemyVitTemp, enemyStrTemp, enemyDefTemp, enemySpdTemp):
-    
-    global levelUpExp
-    
-=======
 currentMob = mobEncounter (4)
 
 def startCombat (playerVitTemp, playerStrTemp, playerDefTemp, playerSpdTemp, enemyVitTemp, enemyStrTemp, enemyDefTemp, enemySpdTemp):
-    
-    
+       
     input ('Combat starts!')
     
     # check if enemy is actually faster and thus goes first
